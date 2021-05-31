@@ -1,5 +1,6 @@
 const router = require('express').Router();
 const { createNewNote, deleteNote } = require('../../lib/notes')
+const allNotes = require('../../db/db');
 
 router.get('/api/notes', (req, res) => {
     res.json(allNotes.slice(1));

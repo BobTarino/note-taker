@@ -5,7 +5,7 @@ const app = express();
 const apiRoutes = require('./routes/apiRoutes');
 const htmlRoutes = require('./routes/htmlRoutes');
 
-const allNotes = require('./db/db.json');
+
 
 // parse incoming string or array data w/ Middleware function
 app.use(express.urlencoded({ extended: true }));
