@@ -1,5 +1,5 @@
-const path = require('path');
 const router = require('express').Router();
+const path = require('path');
 
 // make GET routes that serve front-end application to the client
 router.get('/', (req, res) => {
