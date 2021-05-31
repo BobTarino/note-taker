@@ -1,4 +1,5 @@
 const router = require('express').Router();
+const { createNewNote, deleteNote } = require('../../lib/animals')
 
 app.get('/api/notes', (req, res) => {
     res.json(allNotes.slice(1));
