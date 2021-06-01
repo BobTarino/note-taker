@@ -177,6 +177,8 @@ if (window.location.pathname === '/notes') {
   newNoteBtn.addEventListener('click', handleNewNoteView);
   noteTitle.addEventListener('keyup', handleRenderSaveBtn);
   noteText.addEventListener('keyup', handleRenderSaveBtn);
+  deleteBtn.addEventListener('click', handleNoteDelete);
+  noteList.on("click", ".delete-note", handleNoteDelete);
 }
 
 getAndRenderNotes();
