@@ -5,8 +5,8 @@ const { postNewNote, deleteNote } = require('../../lib/notes');
 
 
 router.get('/notes', (req, res) => {
-    let savedNotes = allNotes;
-    res.json(savedNotes)
+    // let savedNotes = allNotes;
+    res.json(allNotes)
 });
 
 router.post('/notes', (req, res) => {
@@ -15,21 +15,23 @@ router.post('/notes', (req, res) => {
 });
 
 router.delete('/notes/:id', (req, res) => {
-    let savedNotes = JSON.parse(fs.readFileSync("../../db/db.json", "utf8"));
+    let savedNotes = allNotes
     let noteID = req.params.id;
-    let newID = 0;
-    console.log(`Deleting note with ID ${noteID}`);
+   
     savedNotes = savedNotes.filter(currNote => {
         return currNote.id != noteID;
     })
-    
-    for (currNote of savedNotes) {
-        currNote.id = newID.toString();
-        newID++;
-    }
 
-    fs.writeFileSync("./db/db.json", JSON.stringify(savedNotes));
-    res.json(savedNotes);
+
+    let data = JSON.stringify(savedNotes);
+
+    fs.writeFile('./db/db.json', data, (err) => {
+        if (err) throw err;
+        console.log('Data written to file');
+    });
+
+    res.json(data)
+    
 });
 
 module.exports = router;
